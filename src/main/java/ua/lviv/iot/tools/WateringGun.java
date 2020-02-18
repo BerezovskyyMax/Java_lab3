@@ -17,4 +17,12 @@ public class WateringGun extends AbstractWateringTool{
 		System.out.println("watering mode changed!");
 	}
 
+	public WateringMode getWateringMode() {
+		return wateringMode;
+	}
+
+	public void setWateringMode(WateringMode wateringMode) {
+		this.wateringMode = wateringMode;
+	}
+
 }
