@@ -11,6 +11,14 @@ public class WateringFunnel extends AbstractWateringTool{
 		this.vollumeInLitres = vollumeInLitres;
 	}
 	
+	public int getVollumeInLitres() {
+		return vollumeInLitres;
+	}
+
+	public void setVollumeInLitres(int vollumeInLitres) {
+		this.vollumeInLitres = vollumeInLitres;
+	}
+
 	public void refill() {
 		
 	}
