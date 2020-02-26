@@ -1,12 +1,9 @@
 package ua.lviv.iot.model;
 
 public abstract class AbstractPump extends AbstractWateringTool {
-
 	protected double powerInKilowatts;
 	protected TypeOfPumpedLiquid typeOfPumpedLiquid;
-	
-	
-	
+
 	public double getPowerInKilowatts() {
 		return powerInKilowatts;
 	}
@@ -30,18 +27,17 @@ public abstract class AbstractPump extends AbstractWateringTool {
 		this.powerInKilowatts = powerInKilowatts;
 		this.typeOfPumpedLiquid = typeOfPumpedLiquid;
 	}
-	
+
 	void turnOn() {
-		
+
 	}
 
 	void turnOf() {
-		
+
 	}
-	
+
 	void connectHose(int lengthInMeters, int diameterInCentimetres) {
-		
+
 	}
-	
-	
+
 }

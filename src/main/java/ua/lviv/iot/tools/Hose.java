@@ -4,6 +4,14 @@ import ua.lviv.iot.model.AbstractWateringTool;
 
 public class Hose extends AbstractWateringTool {
 
+
+	@Override
+	public String toString() {
+		return "Hose [priceInUAH=" + priceInUAH + ", weightInGramms=" + weightInGramms + ", countryWhereCreated="
+				+ countryWhereCreated + ", warrantyPeriodInMonths=" + warrantyPeriodInMonths + ", bodyMaterial="
+				+ bodyMaterial + ", brand=" + brand + "]";
+	}
+
 	private int lengthInMeters;
 	private int thicknessInMilimetres;
 	private int diameterInCentimetres;

@@ -9,9 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import ua.lviv.iot.manager.WateringManager;
 import ua.lviv.iot.model.AbstractWateringTool;
-import ua.lviv.iot.model.SortingType;
-import ua.lviv.iot.model.TypeOfPumpedLiquid;
-import ua.lviv.iot.tools.*;
 
 class WateringManagerTest extends AbstractWateringManagerTest{
 	
@@ -40,9 +37,12 @@ class WateringManagerTest extends AbstractWateringManagerTest{
 	
 	@Test
 	public void testFindToolsByWarrantyPeriod() {
-		List<AbstractWateringTool> foundTools = wateringManager.findToolsByWarrantyPeriod(14);
+		List<AbstractWateringTool> foundTools = wateringManager.findToolsByWarrantyPeriod(20);
 		
 		assertEquals(0, foundTools.size());
 	}
+	
+	
+	
 
 }

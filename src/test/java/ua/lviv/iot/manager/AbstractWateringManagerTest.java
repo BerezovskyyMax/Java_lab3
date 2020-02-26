@@ -3,8 +3,6 @@ package ua.lviv.iot.manager;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-
 import ua.lviv.iot.model.*;
 import ua.lviv.iot.tools.Hose;
 import ua.lviv.iot.tools.SubmersiblePump;
@@ -52,11 +50,11 @@ public abstract class AbstractWateringManagerTest {
 	public void createHoses() {
 		hoses = new LinkedList<AbstractWateringTool>();
 	
-		hoses.add(new Hose(30.5, 200, "Polland", 4, "latex", null, 100, 30, 3));
+		hoses.add(new Hose(30.5, 200, "Z", 7, "latex", null, 100, 30, 3));
 		
-		hoses.add(new Hose(22.5, 250, "Germany", 2, "PVH", null, 50, 20, 4));
+		hoses.add(new Hose(22.5, 250, "A", 3, "PVH", null, 50, 20, 4));
 		
-		hoses.add(new Hose(16.5, 150, "Italy", 2, "PVH", null, 40, 10, 2));
+		hoses.add(new Hose(16.5, 150, "B", 2, "PVH", null, 40, 10, 2));
 		
 	}
 	
