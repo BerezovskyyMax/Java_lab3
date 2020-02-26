@@ -3,7 +3,6 @@ package ua.lviv.iot.manager;
 import java.util.LinkedList;
 import java.util.List;
 
-import ua.lviv.iot.manager.*;
 import ua.lviv.iot.model.AbstractWateringTool;
 
 public class WateringManager {
@@ -22,20 +21,20 @@ public class WateringManager {
 
 	public List<AbstractWateringTool> findToolsCheaperThan(double priceInUAH) {
 		List<AbstractWateringTool> result = new LinkedList<>();
-		
-		for(AbstractWateringTool currentTool : tools) {
-			if(currentTool.getPriceInUAH() < priceInUAH) {
+
+		for (AbstractWateringTool currentTool : tools) {
+			if (currentTool.getPriceInUAH() < priceInUAH) {
 				result.add(currentTool);
 			}
 		}
 		return result;
 	}
-	
+
 	public List<AbstractWateringTool> findToolsByWarrantyPeriod(int warrantyPeriodInMonths) {
 		List<AbstractWateringTool> result = new LinkedList<>();
-		
-		for(AbstractWateringTool currentTool : tools) {
-			if(currentTool.getWarrantyPeriodInMonths() == warrantyPeriodInMonths) {
+
+		for (AbstractWateringTool currentTool : tools) {
+			if (currentTool.getWarrantyPeriodInMonths() == warrantyPeriodInMonths) {
 				result.add(currentTool);
 			}
 		}
