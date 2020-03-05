@@ -1,43 +1,51 @@
 package ua.lviv.iot.model;
 
 public abstract class AbstractPump extends AbstractWateringTool {
-	protected double powerInKilowatts;
-	protected TypeOfPumpedLiquid typeOfPumpedLiquid;
+    protected double powerInKilowatts;
+    protected TypeOfPumpedLiquid typeOfPumpedLiquid;
 
-	public double getPowerInKilowatts() {
-		return powerInKilowatts;
-	}
+    public String getHeaders() {
+        return super.getHeaders() + "powerInKilowatts, typeOfPumpedLiquid";
+    }
 
-	public void setPowerInKilowatts(double powerInKilowatts) {
-		this.powerInKilowatts = powerInKilowatts;
-	}
+    public String toCSV() {
+        return super.toCSV() + ", " + powerInKilowatts + ", " + typeOfPumpedLiquid;
+    }
 
-	public TypeOfPumpedLiquid getTypeOfPumpedLiquid() {
-		return typeOfPumpedLiquid;
-	}
+    public double getPowerInKilowatts() {
+        return powerInKilowatts;
+    }
 
-	public void setTypeOfPumpedLiquid(TypeOfPumpedLiquid typeOfPumpedLiquid) {
-		this.typeOfPumpedLiquid = typeOfPumpedLiquid;
-	}
+    public void setPowerInKilowatts(double powerInKilowatts) {
+        this.powerInKilowatts = powerInKilowatts;
+    }
 
-	public AbstractPump(double priceInUAH, int weightInKilograms, String countryWhereCreated,
-			int warrantyPeriodInMonths, String bodyMaterial, String brand, double powerInKilowatts,
-			TypeOfPumpedLiquid typeOfPumpedLiquid) {
-		super(priceInUAH, weightInKilograms, countryWhereCreated, warrantyPeriodInMonths, bodyMaterial, brand);
-		this.powerInKilowatts = powerInKilowatts;
-		this.typeOfPumpedLiquid = typeOfPumpedLiquid;
-	}
+    public TypeOfPumpedLiquid getTypeOfPumpedLiquid() {
+        return typeOfPumpedLiquid;
+    }
 
-	void turnOn() {
+    public void setTypeOfPumpedLiquid(TypeOfPumpedLiquid typeOfPumpedLiquid) {
+        this.typeOfPumpedLiquid = typeOfPumpedLiquid;
+    }
 
-	}
+    public AbstractPump(double priceInUAH, int weightInKilograms, String countryWhereCreated,
+            int warrantyPeriodInMonths, String bodyMaterial, String brand, double powerInKilowatts,
+            TypeOfPumpedLiquid typeOfPumpedLiquid) {
+        super(priceInUAH, weightInKilograms, countryWhereCreated, warrantyPeriodInMonths, bodyMaterial, brand);
+        this.powerInKilowatts = powerInKilowatts;
+        this.typeOfPumpedLiquid = typeOfPumpedLiquid;
+    }
 
-	void turnOf() {
+    void turnOn() {
 
-	}
+    }
 
-	void connectHose(int lengthInMeters, int diameterInCentimetres) {
+    void turnOf() {
 
-	}
+    }
+
+    void connectHose(int lengthInMeters, int diameterInCentimetres) {
+
+    }
 
 }

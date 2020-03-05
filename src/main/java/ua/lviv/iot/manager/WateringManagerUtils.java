@@ -9,112 +9,85 @@ import ua.lviv.iot.model.SortingType;
 
 public class WateringManagerUtils {
 
-	// lambda sorting
+    // lambda sorting
 
-	public static void sortToolsBycountryWhereCreatedNaturalOrder(List<AbstractWateringTool> tools) {
+    public static void sortToolsBycountryWhereCreatedNaturalOrder(List<AbstractWateringTool> tools) {
 
-		Comparator<AbstractWateringTool> lambdaCountryWhereCreatedSorter = (AbstractWateringTool firstTool,
-				AbstractWateringTool secondTool) -> firstTool.getCountryWhereCreated()
-						.compareTo(secondTool.getCountryWhereCreated());
+        Comparator<AbstractWateringTool> lambdaCountryWhereCreatedSorter = (AbstractWateringTool firstTool,
+                AbstractWateringTool secondTool) -> firstTool.getCountryWhereCreated()
+                        .compareTo(secondTool.getCountryWhereCreated());
 
-		tools.sort(lambdaCountryWhereCreatedSorter);
-		for (AbstractWateringTool currentTool : tools) {
-			System.out.println("country of creation of " + currentTool.getClass().getSimpleName() + " class: "
-					+ currentTool.getCountryWhereCreated());
-		}
-	}
+        tools.sort(lambdaCountryWhereCreatedSorter);
+    }
 
-	// anonymous inner class sorting
+    // anonymous inner class sorting
 
-	public static void sortToolsByPriceInUAH(List<AbstractWateringTool> tools, SortingType sortingType) {
+    public static void sortToolsByPriceInUAH(List<AbstractWateringTool> tools, SortingType sortingType) {
 
-		Comparator<AbstractWateringTool> priceInUAHComparator = new Comparator<AbstractWateringTool>() {
+        Comparator<AbstractWateringTool> priceInUAHComparator = new Comparator<AbstractWateringTool>() {
 
-			@Override
-			public int compare(AbstractWateringTool firstTool, AbstractWateringTool secondTool) {
-				return (int) (firstTool.getPriceInUAH() - secondTool.getPriceInUAH());
-			}
-		};
+            @Override
+            public int compare(AbstractWateringTool firstTool, AbstractWateringTool secondTool) {
+                return (int) (firstTool.getPriceInUAH() - secondTool.getPriceInUAH());
+            }
+        };
 
-		if (sortingType == SortingType.ASCENDING) {
-			tools.sort(priceInUAHComparator);
-			for (AbstractWateringTool currentTool : tools) {
-				System.out.println("price in UAH of " + currentTool.getClass().getSimpleName() + " class: "
-						+ currentTool.getPriceInUAH());
-			}
-		}
+        if (sortingType == SortingType.ASCENDING) {
+            tools.sort(priceInUAHComparator);
+        }
 
-		else if (sortingType == SortingType.DESCENDING) {
-			tools.sort(priceInUAHComparator.reversed());
-			for (AbstractWateringTool currentTool : tools) {
-				System.out.println("price in UAH of " + currentTool.getClass().getSimpleName() + " class: "
-						+ currentTool.getPriceInUAH());
-			}
-		}
+        else if (sortingType == SortingType.DESCENDING) {
+            tools.sort(priceInUAHComparator.reversed());
 
-	}
+        }
 
-	// static inner class sorting
+    }
 
-	public static void sortToolsByWarrantyPeriod(List<AbstractWateringTool> tools, SortingType sortingType) {
-		if (sortingType == SortingType.ASCENDING) {
-			tools.sort(new ToolsSorterByWarrantyPeriod());
-			for (AbstractWateringTool currentTool : tools) {
-				System.out.println("warranty period in months of " + currentTool.getClass().getSimpleName() + " class: "
-						+ currentTool.getWarrantyPeriodInMonths());
-			}
-		}
+    // static inner class sorting
 
-		else if (sortingType == SortingType.DESCENDING) {
-			tools.sort(new ToolsSorterByWarrantyPeriod().reversed());
-			for (AbstractWateringTool currentTool : tools) {
-				System.out.println("warranty period in months of " + currentTool.getClass().getSimpleName() + " class: "
-						+ currentTool.getWarrantyPeriodInMonths());
-			}
-		}
-	}
+    public static void sortToolsByWarrantyPeriod(List<AbstractWateringTool> tools, SortingType sortingType) {
+        if (sortingType == SortingType.ASCENDING) {
+            tools.sort(new ToolsSorterByWarrantyPeriod());
+        }
 
-	// non static inner class sorting
+        else if (sortingType == SortingType.DESCENDING) {
+            tools.sort(new ToolsSorterByWarrantyPeriod().reversed());
+        }
+    }
 
-	public static void sortToolsByWeightInGramms(List<AbstractWateringTool> tools, SortingType sortingType) {
+    // non static inner class sorting
 
-		WateringManagerUtils managerUtils = new WateringManagerUtils();
+    public static void sortToolsByWeightInGramms(List<AbstractWateringTool> tools, SortingType sortingType) {
 
-		ToolsSorterByWeightInGramms sorterByWeightInGramms = managerUtils.new ToolsSorterByWeightInGramms();
+        WateringManagerUtils managerUtils = new WateringManagerUtils();
 
-		if (sortingType == SortingType.ASCENDING) {
-			tools.sort(sorterByWeightInGramms);
-			for (AbstractWateringTool currentTool : tools) {
-				System.out.println("weight in gramms of " + currentTool.getClass().getSimpleName() + " class: "
-						+ currentTool.getWeightInGramms());
-			}
-		}
+        ToolsSorterByWeightInGramms sorterByWeightInGramms = managerUtils.new ToolsSorterByWeightInGramms();
 
-		else if (sortingType == SortingType.DESCENDING) {
-			tools.sort(sorterByWeightInGramms.reversed());
-			for (AbstractWateringTool currentTool : tools) {
-				System.out.println("weight in gramms of " + currentTool.getClass().getSimpleName() + " class: "
-						+ currentTool.getWeightInGramms());
-			}
-		}
-	}
+        if (sortingType == SortingType.ASCENDING) {
+            tools.sort(sorterByWeightInGramms);
+        }
 
-	private static class ToolsSorterByWarrantyPeriod implements Comparator<AbstractWateringTool>, Serializable {
+        else if (sortingType == SortingType.DESCENDING) {
+            tools.sort(sorterByWeightInGramms.reversed());
+        }
+    }
 
-		private static final long serialVersionUID = 1L;
+    private static class ToolsSorterByWarrantyPeriod implements Comparator<AbstractWateringTool>, Serializable {
 
-		@Override
-		public int compare(AbstractWateringTool firstTool, AbstractWateringTool secondTool) {
-			return firstTool.getWarrantyPeriodInMonths() - secondTool.getWarrantyPeriodInMonths();
-		}
-	}
+        private static final long serialVersionUID = 1L;
 
-	private class ToolsSorterByWeightInGramms implements Comparator<AbstractWateringTool> {
+        @Override
+        public int compare(AbstractWateringTool firstTool, AbstractWateringTool secondTool) {
+            return firstTool.getWarrantyPeriodInMonths() - secondTool.getWarrantyPeriodInMonths();
+        }
+    }
 
-		@Override
-		public int compare(AbstractWateringTool firstTool, AbstractWateringTool secondTool) {
-			return firstTool.getWeightInGramms() - secondTool.getWeightInGramms();
-		}
-	}
+    private class ToolsSorterByWeightInGramms implements Comparator<AbstractWateringTool> {
+
+        @Override
+        public int compare(AbstractWateringTool firstTool, AbstractWateringTool secondTool) {
+            return firstTool.getWeightInGramms() - secondTool.getWeightInGramms();
+        }
+    }
 
 }
