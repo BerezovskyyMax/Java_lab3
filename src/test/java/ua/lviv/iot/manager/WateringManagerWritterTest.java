@@ -14,10 +14,13 @@ public class WateringManagerWritterTest extends AbstractWateringManagerTest {
     @BeforeEach
     public void setUp() {
         createAllTools();
+        toolsWritter = new ToolsWriter();
     }
     
     @Test
     public void testWritingToFile() throws IOException {
+        
+        
         toolsWritter.writeToFile(hoses);
     }
 
