@@ -38,7 +38,6 @@ public class WateringManagerUtils {
 
         else if (sortingType == SortingType.DESCENDING) {
             tools.sort(priceInUAHComparator.reversed());
-
         }
 
     }

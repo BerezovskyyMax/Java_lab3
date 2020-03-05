@@ -43,13 +43,5 @@ public class WateringManagerUtilsTest extends AbstractWateringManagerTest {
         System.out.println("");
         System.out.println("");
     }
-    
-    @Test
-    public void testWriteToFile() throws IOException {
-        createAllTools();
-        ToolsWriter toolsWriter = new ToolsWriter();
-        
-        toolsWriter.writeToFile(hoses);
-    }    
 
 }
