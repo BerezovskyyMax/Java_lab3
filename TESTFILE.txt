@@ -1,3 +1,0 @@
-priceInUAH, weightInGramms, countryWhereCreated, warrantyPeriodInMonths, bodyMaterial, brandlengthInMeters, thicknessInMilimetres, diameterInCentimetres30.5, 200, Z, 7, latex, null, 100, 30, 3
-priceInUAH, weightInGramms, countryWhereCreated, warrantyPeriodInMonths, bodyMaterial, brandlengthInMeters, thicknessInMilimetres, diameterInCentimetres22.5, 250, A, 3, PVH, null, 50, 20, 4
-priceInUAH, weightInGramms, countryWhereCreated, warrantyPeriodInMonths, bodyMaterial, brandlengthInMeters, thicknessInMilimetres, diameterInCentimetres16.5, 150, B, 2, PVH, null, 40, 10, 2
