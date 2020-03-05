@@ -9,6 +9,8 @@ import writer.ToolsWriter;
 
 public class WateringManagerWritterTest extends AbstractWateringManagerTest {
     
+    ToolsWriter toolsWritter;
+    
     @BeforeEach
     public void setUp() {
         createAllTools();
@@ -16,7 +18,7 @@ public class WateringManagerWritterTest extends AbstractWateringManagerTest {
     
     @Test
     public void testWritingToFile() throws IOException {
-        ToolsWriter.writeToFile(hoses);
+        toolsWritter.writeToFile(hoses);
     }
 
     

@@ -11,17 +11,14 @@ import ua.lviv.iot.model.AbstractWateringTool;
 
 public class ToolsWriter {
 
-    private static Writer writer;
 
-    public static void writeToFile(List<AbstractWateringTool> tools) {
+    public void writeToFile(List<AbstractWateringTool> tools) {
 
-        String PATH = new File("").getAbsolutePath();
+        String pathToFile = new File("").getAbsolutePath();
 
-        File file = new File(PATH + "//test.txt");
+        File file = new File(pathToFile + "//test.txt");
 
-        try {
-
-            writer = new FileWriter(file, StandardCharsets.UTF_8);
+        try(Writer writer = new FileWriter(file, StandardCharsets.UTF_8)) {
 
             for (AbstractWateringTool currentTool : tools) {
                 writer.write(currentTool.getHeaders() + currentTool.toCSV() + "\n");
@@ -29,17 +26,6 @@ public class ToolsWriter {
 
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            try {
-                writer.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
 
     }
