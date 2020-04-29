@@ -1,0 +1,5 @@
+ua\lviv\iot\spring\first\rest\controller\PumpsController.class
+ua\lviv\iot\spring\first\business\PumpService.class
+ua\lviv\iot\spring\first\rest\model\Pump.class
+ua\lviv\iot\spring\first\rest\RestApplication.class
+ua\lviv\iot\spring\first\datacess\PumpRepository.class

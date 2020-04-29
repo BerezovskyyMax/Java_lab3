@@ -1,10 +1,8 @@
 package ua.lviv.iot.spring.first.rest.controller;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 
-import java.util.Map;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,48 +14,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ua.lviv.iot.spring.first.business.PumpService;
 import ua.lviv.iot.spring.first.rest.model.Pump;
 
 @RequestMapping("/pumps")
 @RestController
 public class PumpsController {
-    private Map<Integer, Pump> pumps = new HashMap<>();
+
     private int idCounter = 0;
+
+    @Autowired
+    PumpService pumpService;
+
+    @PostMapping()
+    public ResponseEntity<Pump> createPump(final @RequestBody Pump pump) {
+
+        pump.setId(++idCounter);
+
+        pumpService.createPump(pump);
+
+        return new ResponseEntity<Pump>(pump, HttpStatus.CREATED);
+    }
 
     @GetMapping
     public LinkedList<Pump> getPumps() {
-        return new LinkedList<Pump>(pumps.values());
+        return new LinkedList<Pump>(pumpService.getAllPumps());
     }
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<Pump> getPump(@PathVariable("id") Integer pumpId) {
 
-        Pump getSingle = pumps.get(pumpId);
-
-        if (pumps.get(pumpId) == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
+        Pump getSingle = pumpService.getSinglePump(pumpId);
 
         return new ResponseEntity<Pump>(getSingle, HttpStatus.OK);
 
     }
 
-    @PostMapping()
-    public ResponseEntity<Pump> createPump(final @RequestBody Pump pump) {
-
-        pumps.put(pump.setId(++idCounter), pump);
-
-        return new ResponseEntity<Pump>(pump, HttpStatus.CREATED);
-    }
-
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<Pump> deletePump(@PathVariable("id") Integer pumpId) {
 
-        Pump remove = pumps.remove(pumpId);
-
-        if (remove == null) {
-            return new ResponseEntity<Pump>(HttpStatus.NOT_FOUND);
-        }
+        pumpService.deletePump(pumpId);
         return new ResponseEntity<Pump>(HttpStatus.NO_CONTENT);
     }
 
@@ -65,12 +61,12 @@ public class PumpsController {
     public ResponseEntity<Pump> updatePump(@PathVariable("id") Integer pumpId, final @RequestBody Pump pump) {
         pump.setId(pumpId);
 
-        Pump update = pumps.replace(pumpId, pump);
+        Pump updatedPump = pumpService.updatePump(pumpId, pump);
 
-        if (update == null) {
+        if (updatedPump == null) {
             return new ResponseEntity<Pump>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Pump>(update, HttpStatus.OK);
+        return new ResponseEntity<Pump>(updatedPump, HttpStatus.OK);
 
     }
 }

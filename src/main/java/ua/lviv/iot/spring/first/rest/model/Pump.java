@@ -1,7 +1,14 @@
 package ua.lviv.iot.spring.first.rest.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class Pump {
-    
+
     private double priceInUAH;
     private int weightInGramms;
     private String countryWhereCreated;
@@ -9,12 +16,15 @@ public class Pump {
     private String bodyMaterial;
     private String brand;
     private double powerInKilowatts;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     public Pump() {
-        
+
     }
-    
+
     public Pump(double priceInUAH, int weightInGramms, String countryWhereCreated, int warrantyPeriodInMonths,
             String bodyMaterial, String brand, double powerInKilowatts) {
         super();
@@ -90,7 +100,12 @@ public class Pump {
     public Integer setId(Integer id) {
         return this.id = id;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Pump [priceInUAH=" + priceInUAH + ", weightInGramms=" + weightInGramms + ", countryWhereCreated="
+                + countryWhereCreated + ", warrantyPeriodInMonths=" + warrantyPeriodInMonths + ", bodyMaterial="
+                + bodyMaterial + ", brand=" + brand + ", powerInKilowatts=" + powerInKilowatts + ", id=" + id + "]";
+    }
 
 }
